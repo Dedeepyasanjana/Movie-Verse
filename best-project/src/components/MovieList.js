@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style.css';
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, onShowMore }) => {
   return (
     <div className="movie-list">
       {movies.map((movie) => (
@@ -18,6 +18,9 @@ const MovieList = ({ movies }) => {
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
         </div>
       ))}
+      <div className='button-container'>
+        <button className="show-more-button" onClick={onShowMore}>Show More</button>
+      </div>
     </div>
   );
 };

@@ -11,12 +11,13 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
   const [page, setPage] = useState(1); // Track current page for pagination
-
+  const [movieType, setMovieType] = useState('popular');
+  
   useEffect(() => {
-    fetchMovies('popular', page); // Fetch popular movies on initial load
-  }, [page]); // Re-fetch movies when page changes
+    fetchMovies(movieType, page); // Fetch popular movies on initial load
+  }, [page, movieType]); // Re-fetch movies when page changes
 
-  const fetchMovies = (type, page) => {
+  const fetchMovies = (type, page, query) => {
     let url;
     const api_key = '50e49373c2098323b103d3c5f02f42c8';
     if (type === 'popular') {
@@ -54,12 +55,20 @@ const App = () => {
 
   const navigate = (type) => {
     setCurrentPage(type); // Navigate to different pages (about, contact, disclaimer)
+    setPage(1);
+    setMovieType(type);
+    if(type==='popular' || type=== 'new' || type === 'upcoming' || type === 'tv'){
+      fetchMovies(type,1);
+    }
   };
+  const showMoreMovies = () => {
+    setPage(prevPage => prevPage + 1);
+  }
 
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <MovieList movies={movies} />;
+        return <MovieList movies={movies} onShowMore={showMoreMovies} />;
       case 'about':
         return <About />;
       case 'contact':
@@ -67,7 +76,7 @@ const App = () => {
       case 'disclaimer':
         return <Disclaimer />;
       default:
-        return <MovieList movies={movies} />;
+        return <MovieList movies={movies} onShowMore={showMoreMovies}/>;
     }
   };
 

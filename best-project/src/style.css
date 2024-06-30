@@ -1,4 +1,5 @@
 /*stylings*/
+/*stylings*/
 *{
     margin: 0;
     padding: 0;
@@ -102,7 +103,7 @@ li a:hover{
     color: gray;
     cursor: pointer;
 }
-.container{
+.movie-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -111,31 +112,77 @@ li a:hover{
     margin-top: 20px;
     min-height: 80vh;
 }
-.container.box{
-    height: 350px;
+.movie-list .movie-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 420px;
+    width: 200px;
+    margin: 10px;
+    /* background: black; */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.container .box .moviesDetails{
+.movie-list .movie-item img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    /* border: 4px solid white; */
+}
+
+.movie-list .movie-item .moviesDetails{
     display: flex;
-    align-items: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
 }
 .leftDetails{
     font-family: "sofia", sans-serif;
     text-align: left;
-    width: 140px;
-    padding-left: 15px;
+    /* width: 140px; */
+    flex: 1;
+    padding-left: 5px;
 }
 .leftDetails h5, .leftDetails p{
     text-align: left;
+    margin: 5px 0;
 }
-img{
-    height: 250px;
-    width: 180px;
-    border: 4px solid white;
+
+.rightDetails {
+    text-align: right;
 }
+
+.rightDetails p {
+    margin: 5px 0;
+}
+
 hr{
     margin: 20px 0;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.show-more-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.show-more-button:hover{
+    background-color: darkmagenta;
+    color: lightgray;
 }
 footer{
     display: flex;
